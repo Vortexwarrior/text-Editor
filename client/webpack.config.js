@@ -49,7 +49,21 @@ module.exports = () => {
 
     module: {
       rules: [
-        
+        {
+          test: /\.css$/i,
+          use:['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.m?s$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: ['@babel/pugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+            }
+          }
+        }
       ],
     },
   };
